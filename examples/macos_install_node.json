@@ -1,0 +1,32 @@
+{
+    "version": "v1",
+    "name": "MacOS NodeJS Installation",
+    "description": "Install specific NodeJS program",
+    "pre_checks": [
+      {
+        "command": "brew --version",
+        "description": "brew install node@{{NODE_BASE_VERSION}}"
+      }
+    ],
+    "steps": [
+      {
+        "command": "echo 'export PATH=\"/opt/homebrew/opt/node@{{NODE_BASE_VERSION}}/bin:$PATH\"' >> ~/.{{SHELL_FILE}}",
+        "description": "write into shell specific file"
+      },
+      {
+        "command": "source ~/.{{SHELL_FILE}}",
+        "description": "applying changes you've made to it without needing to restart your terminal"
+      }
+    ],
+    "actions": {
+      "test": {
+        "command": "node --version",
+        "description": "testing installed node version"
+      }
+    },
+    "config": {
+      "variables": {},
+      "store_variables": false
+    }
+}
+  
